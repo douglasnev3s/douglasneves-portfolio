@@ -80,7 +80,7 @@ export default function StackPage() {
           Currently Learning
         </h2>
         <p className="text-muted-foreground">
-          Technologies I'm actively exploring to expand my skill set
+          Technologies I&apos;m actively exploring to expand my skill set
         </p>
         <div className="flex flex-wrap gap-2">
           {currentlyLearning.map((tech) => (
@@ -105,7 +105,7 @@ export default function StackPage() {
             and long-term maintainability.
           </p>
           <p>
-            Whether it's architecting scalable backend systems with Node.js and PostgreSQL, 
+            Whether it&apos;s architecting scalable backend systems with Node.js and PostgreSQL, 
             or creating responsive frontends with React and TypeScript, I focus on 
             writing clean, tested, and documented code that teams can build upon.
           </p>

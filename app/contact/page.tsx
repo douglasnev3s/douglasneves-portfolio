@@ -17,7 +17,7 @@ export default function ContactPage() {
           Contact
         </h1>
         <p className="text-lg text-muted-foreground">
-          Let's work together on your next project.
+          Let&apos;s work together on your next project.
         </p>
       </div>
 

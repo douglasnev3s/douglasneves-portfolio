@@ -53,7 +53,7 @@ export default function ProjectsPage() {
           Projects
         </h1>
         <p className="text-lg text-muted-foreground">
-          Featured work and projects I've built
+          Featured work and projects I&apos;ve built
         </p>
       </div>
 
@@ -170,7 +170,7 @@ export default function ProjectsPage() {
           Interested in Working Together?
         </h2>
         <p className="text-muted-foreground">
-          I'm always open to discussing new projects and opportunities.
+          I&apos;m always open to discussing new projects and opportunities.
         </p>
         <Button asChild>
           <Link href="/contact">
