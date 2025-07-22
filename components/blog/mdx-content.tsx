@@ -39,7 +39,7 @@ export function MDXContent({ source }: MDXContentProps) {
   // Simple markdown-like rendering for the content
   const processContent = (content: string) => {
     // Split content but preserve code blocks
-    const parts = []
+    const parts: string[] = []
     const sections = content.split(/(```[\s\S]*?```)/g)
     
     sections.forEach(section => {
