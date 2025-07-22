@@ -40,7 +40,7 @@ export default function BlogPage() {
             Coming Soon
           </h2>
           <p className="text-muted-foreground">
-            I'm working on some exciting blog posts. Check back soon for insights on 
+            I&apos;m working on some exciting blog posts. Check back soon for insights on 
             web development, JavaScript, and the latest in technology.
           </p>
         </div>

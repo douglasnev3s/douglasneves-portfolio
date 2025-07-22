@@ -80,7 +80,7 @@ export default function Home() {
           </p>
           
           <p>
-            I'm passionate about creating efficient, maintainable solutions that solve real business problems, whether that's optimizing database performance for energy companies or building intuitive dashboards for fleet management.
+            I&apos;m passionate about creating efficient, maintainable solutions that solve real business problems, whether that&apos;s optimizing database performance for energy companies or building intuitive dashboards for fleet management.
           </p>
         </div>
       </div>
