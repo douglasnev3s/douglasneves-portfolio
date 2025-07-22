@@ -31,7 +31,7 @@ export function BlogCard({ post }: BlogCardProps) {
           <CardTitle className="text-xl">
             <Link 
               href={`/blog/${post.slug}`}
-              className="hover:text-primary transition-colors"
+              className="hover:text-white transition-colors"
             >
               {post.title}
             </Link>

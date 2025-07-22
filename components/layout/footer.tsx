@@ -12,7 +12,7 @@ export function Footer() {
               href="https://github.com/douglasnev3s"
               target="_blank"
               rel="noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-white transition-colors"
             >
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
@@ -21,14 +21,14 @@ export function Footer() {
               href="https://linkedin.com/in/douglasneves"
               target="_blank"
               rel="noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-white transition-colors"
             >
               <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
             <Link
               href="mailto:douglas.neves@gmail.com"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-white transition-colors"
             >
               <Mail className="h-5 w-5" />
               <span className="sr-only">Email</span>

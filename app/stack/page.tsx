@@ -42,7 +42,7 @@ export default function StackPage() {
     <div className="container mx-auto px-4 py-16 max-w-4xl">
       {/* Header */}
       <div className="space-y-4 mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary">
+        <h1 className="text-4xl md:text-5xl font-bold" style={{ color: 'hsl(156.2, 71.6%, 66.9%)' }}>
           Technologies
         </h1>
         <p className="text-lg text-muted-foreground">
@@ -55,7 +55,7 @@ export default function StackPage() {
         {technologies.map((category) => (
           <Card key={category.category}>
             <CardHeader className="pb-4">
-              <CardTitle className="text-lg text-primary">
+              <CardTitle className="text-lg text-white">
                 {category.category}
               </CardTitle>
             </CardHeader>
@@ -76,7 +76,7 @@ export default function StackPage() {
 
       {/* Currently Learning Section */}
       <div className="space-y-6">
-        <h2 className="text-2xl font-bold text-primary">
+        <h2 className="text-2xl font-bold text-white">
           Currently Learning
         </h2>
         <p className="text-muted-foreground">
@@ -84,7 +84,7 @@ export default function StackPage() {
         </p>
         <div className="flex flex-wrap gap-2">
           {currentlyLearning.map((tech) => (
-            <Badge key={tech} className="text-xs">
+            <Badge key={tech} variant="secondary" className="text-xs">
               {tech}
             </Badge>
           ))}
@@ -95,7 +95,7 @@ export default function StackPage() {
 
       {/* Philosophy Section */}
       <div className="space-y-6">
-        <h2 className="text-2xl font-bold text-primary">
+        <h2 className="text-2xl font-bold text-white">
           Development Philosophy
         </h2>
         <div className="space-y-4 text-foreground leading-relaxed">

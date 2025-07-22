@@ -49,7 +49,7 @@ export default function ProjectsPage() {
     <div className="container mx-auto px-4 py-16 max-w-4xl">
       {/* Header */}
       <div className="space-y-4 mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary">
+        <h1 className="text-4xl md:text-5xl font-bold" style={{ color: 'hsl(50.4, 97.8%, 63.5%)' }}>
           Projects
         </h1>
         <p className="text-lg text-muted-foreground">
@@ -63,13 +63,13 @@ export default function ProjectsPage() {
           <CardHeader>
             <div className="flex items-start justify-between">
               <div className="space-y-2">
-                <CardTitle className="text-2xl text-primary">
+                <CardTitle className="text-2xl text-white">
                   {featuredProject.title}
                 </CardTitle>
                 <p className="text-lg font-medium text-muted-foreground">
                   {featuredProject.subtitle}
                 </p>
-                <Badge variant="default" className="w-fit">
+                <Badge variant="secondary" className="w-fit text-white">
                   {featuredProject.status}
                 </Badge>
               </div>
@@ -82,11 +82,11 @@ export default function ProjectsPage() {
             
             {/* Key Features */}
             <div>
-              <h4 className="text-lg font-semibold text-primary mb-3">Key Features:</h4>
+              <h4 className="text-lg font-semibold text-white mb-3">Key Features:</h4>
               <ul className="space-y-2">
                 {featuredProject.features.map((feature, index) => (
                   <li key={index} className="flex items-start text-foreground">
-                    <span className="text-primary mr-2">•</span>
+                    <span className="text-white mr-2">•</span>
                     {feature}
                   </li>
                 ))}
@@ -95,7 +95,7 @@ export default function ProjectsPage() {
             
             {/* Tech Stack */}
             <div>
-              <h4 className="text-lg font-semibold text-primary mb-3">Tech Stack:</h4>
+              <h4 className="text-lg font-semibold text-white mb-3">Tech Stack:</h4>
               <div className="flex flex-wrap gap-2">
                 {featuredProject.technologies.map((tech) => (
                   <Badge key={tech} variant="secondary" className="text-xs">
@@ -107,7 +107,7 @@ export default function ProjectsPage() {
             
             {/* Links */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button asChild>
+              <Button variant="secondary" asChild>
                 <Link href={featuredProject.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Live Demo
@@ -128,7 +128,7 @@ export default function ProjectsPage() {
 
       {/* Other Projects */}
       <div className="space-y-8">
-        <h2 className="text-2xl font-bold text-primary">
+        <h2 className="text-2xl font-bold text-white">
           Enterprise Work
         </h2>
         
@@ -137,7 +137,7 @@ export default function ProjectsPage() {
             <Card key={index}>
               <CardHeader>
                 <div className="space-y-2">
-                  <CardTitle className="text-lg text-primary">
+                  <CardTitle className="text-lg text-white">
                     {project.title}
                   </CardTitle>
                   <Badge variant="outline" className="w-fit text-xs">
@@ -166,13 +166,13 @@ export default function ProjectsPage() {
 
       {/* CTA Section */}
       <div className="text-center space-y-6">
-        <h2 className="text-2xl font-bold text-primary">
+        <h2 className="text-2xl font-bold text-white">
           Interested in Working Together?
         </h2>
         <p className="text-muted-foreground">
           I&apos;m always open to discussing new projects and opportunities.
         </p>
-        <Button asChild>
+        <Button variant="secondary" asChild>
           <Link href="/contact">
             Get in Touch
           </Link>

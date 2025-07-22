@@ -120,7 +120,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <p className="text-muted-foreground">
           Thanks for reading! If you enjoyed this article, feel free to share it.
         </p>
-        <Button asChild>
+        <Button variant="secondary" asChild>
           <Link href="/contact">Get in Touch</Link>
         </Button>
       </footer>

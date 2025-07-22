@@ -13,7 +13,7 @@ export default function ContactPage() {
     <div className="container mx-auto px-4 py-16 max-w-3xl">
       {/* Header */}
       <div className="space-y-4 mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary">
+        <h1 className="text-4xl md:text-5xl font-bold" style={{ color: 'hsl(27, 96%, 61%)' }}>
           Contact
         </h1>
         <p className="text-lg text-muted-foreground">
@@ -27,15 +27,15 @@ export default function ContactPage() {
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg text-primary">
-                <Mail className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-2 text-lg text-white">
+                <Mail className="h-5 w-5 text-white" />
                 Email
               </CardTitle>
             </CardHeader>
             <CardContent>
               <a 
                 href="mailto:douglas.neves@gmail.com"
-                className="text-foreground hover:text-primary transition-colors"
+                className="text-foreground hover:text-white transition-colors"
               >
                 douglas.neves@gmail.com
               </a>
@@ -44,8 +44,8 @@ export default function ContactPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg text-primary">
-                <MapPin className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-2 text-lg text-white">
+                <MapPin className="h-5 w-5 text-white" />
                 Location
               </CardTitle>
             </CardHeader>
@@ -56,8 +56,8 @@ export default function ContactPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg text-primary">
-                <Clock className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-2 text-lg text-white">
+                <Clock className="h-5 w-5 text-white" />
                 Timezone
               </CardTitle>
             </CardHeader>
@@ -71,7 +71,7 @@ export default function ContactPage() {
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg text-primary">
+              <CardTitle className="text-lg text-white">
                 Current Availability
               </CardTitle>
             </CardHeader>
@@ -88,7 +88,7 @@ export default function ContactPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg text-primary">
+              <CardTitle className="text-lg text-white">
                 What I Can Help With
               </CardTitle>
             </CardHeader>
@@ -108,7 +108,7 @@ export default function ContactPage() {
 
       {/* Social Links */}
       <div className="mt-16 text-center space-y-6">
-        <h2 className="text-2xl font-bold text-primary">Connect With Me</h2>
+        <h2 className="text-2xl font-bold text-white">Connect With Me</h2>
         <div className="flex justify-center gap-4">
           <Button variant="outline" asChild>
             <a
@@ -132,7 +132,7 @@ export default function ContactPage() {
               LinkedIn
             </a>
           </Button>
-          <Button asChild>
+          <Button variant="secondary" asChild>
             <a href="mailto:douglas.neves@gmail.com" className="gap-2">
               <Mail className="h-4 w-4" />
               Send Email
@@ -146,7 +146,7 @@ export default function ContactPage() {
         <Card>
           <CardContent className="pt-6">
             <p className="text-muted-foreground">
-              I typically respond to emails within <span className="text-primary font-medium">24 hours</span>.
+              I typically respond to emails within <span className="text-white font-medium">24 hours</span>.
               For urgent inquiries, feel free to mention it in the subject line.
             </p>
           </CardContent>
