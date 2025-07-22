@@ -11,21 +11,21 @@ export const metadata: Metadata = {
 
 const experiences = [
   {
-    title: "Senior Software Engineer & Technical Lead",
-    company: "Siemens",
-    location: "Curitiba, Brazil",
-    period: "Mar 2023 – Present",
-    duration: "2 yrs 5 mos",
-    description: "Leading data migration and system integration for Siemens Spectrum Power 7 across international projects.",
-    current: true
-  },
-  {
     title: "Founder & Full-Stack Developer", 
     company: "Suprify",
     location: "Remote",
     period: "Jan 2024 – Present",
     duration: "1 yr 2 mos",
     description: "Building B2B SaaS platform for printer fleet management using Node.js, React, Next.js, and PostgreSQL.",
+    current: true
+  },
+  {
+    title: "Senior Software Engineer & Technical Lead",
+    company: "Siemens",
+    location: "Curitiba, Brazil",
+    period: "Mar 2023 – Present",
+    duration: "2 yrs 5 mos",
+    description: "Leading data migration and system integration for Siemens Spectrum Power 7 across international projects.",
     current: true
   },
   {
