@@ -1,0 +1,261 @@
+---
+title: "Building a B2B SaaS Platform with Next.js: Lessons from Suprify"
+date: "2025-07-22"
+description: "Key insights and technical decisions from building Suprify, a B2B SaaS platform for printer fleet management using Next.js, Node.js, and PostgreSQL."
+tags: ["Next.js", "SaaS", "B2B", "Node.js", "PostgreSQL", "Entrepreneurship"]
+published: true
+---
+
+Building Suprify, our B2B SaaS platform for printer fleet management, has been an incredible journey of technical challenges and architectural decisions. Here are the key lessons learned from developing a multi-tenant SaaS application that serves managed print service providers.
+
+## Architecture Decisions
+
+### Why Next.js for B2B SaaS?
+
+When starting Suprify, I needed a framework that could handle both the marketing site and the application itself. Next.js proved to be the perfect choice for several reasons:
+
+- **Full-stack capabilities**: API routes allowed me to build the entire backend in one codebase
+- **SEO optimization**: Static generation for marketing pages improved our search visibility
+- **Performance**: Built-in optimizations reduced load times for our dashboard
+- **TypeScript support**: Essential for maintaining code quality as the team grows
+
+### Multi-tenant Architecture
+
+One of the biggest challenges was designing a multi-tenant system that could scale. Here's how we approached it:
+
+```typescript
+// Tenant isolation at the database level
+const getUsersByTenant = async (tenantId: string) => {
+  return prisma.user.findMany({
+    where: {
+      tenantId: tenantId
+    }
+  });
+};
+```
+
+```typescript
+// Middleware for tenant resolution
+export function withTenant(handler: ApiHandler) {
+  return async (req: NextApiRequest, res: NextApiResponse) => {
+    const tenantId = await resolveTenant(req);
+    if (!tenantId) {
+      return res.status(404).json({ error: 'Tenant not found' });
+    }
+    
+    req.tenant = tenantId;
+    return handler(req, res);
+  };
+}
+```
+
+## Database Design
+
+### PostgreSQL + Prisma ORM
+
+We chose PostgreSQL for its reliability and JSON support, paired with Prisma ORM for type safety:
+
+```prisma
+model Tenant {
+  id        String   @id @default(cuid())
+  name      String
+  subdomain String   @unique
+  createdAt DateTime @default(now())
+  
+  users     User[]
+  printers  Printer[]
+  
+  @@map("tenants")
+}
+```
+
+```prisma
+model Printer {
+  id       String @id @default(cuid())
+  name     String
+  ipAddress String
+  tenantId String
+  
+  tenant   Tenant @relation(fields: [tenantId], references: [id])
+  
+  @@map("printers")
+}
+```
+
+### Real-time Data Challenges
+
+Handling real-time printer data required careful consideration of database performance:
+
+- **Connection pooling**: Essential for handling multiple tenants
+- **Indexing strategy**: Composite indexes on tenant_id + timestamp
+- **Data retention**: Automatic cleanup of old monitoring data
+
+## Frontend Architecture
+
+### Component Organization
+
+We organized components around business domains rather than technical layers:
+
+```bash
+components/
+├── tenant/
+│   ├── TenantSelector.tsx
+│   └── TenantSettings.tsx
+├── printers/
+│   ├── PrinterList.tsx
+│   ├── PrinterCard.tsx
+│   └── PrinterMetrics.tsx
+└── dashboard/
+    ├── Overview.tsx
+    └── Charts.tsx
+```
+
+### State Management
+
+For a B2B application, we found that React's built-in state management combined with SWR for server state worked perfectly:
+
+```typescript
+import useSWR from 'swr';
+
+const usePrinters = (tenantId: string) => {
+  const { data, error, mutate } = useSWR(
+    tenantId ? `/api/tenants/${tenantId}/printers` : null,
+    fetcher,
+    {
+      refreshInterval: 30000, // Refresh every 30 seconds
+      revalidateOnFocus: false
+    }
+  );
+
+  return {
+    printers: data,
+    isLoading: !error && !data,
+    isError: error,
+    refresh: mutate
+  };
+};
+```
+
+## Key Technical Challenges
+
+### SNMP Protocol Integration
+
+Integrating with printers via SNMP protocol required building a Node.js service that could handle multiple concurrent connections:
+
+```javascript
+const snmp = require('net-snmp');
+
+class PrinterMonitor {
+  constructor() {
+    this.sessions = new Map();
+  }
+
+  async monitorPrinter(printer) {
+    const session = snmp.createSession(printer.ipAddress, 'public');
+    
+    const oids = [
+      '1.3.6.1.2.1.43.10.2.1.4.1.1', // Black toner level
+      '1.3.6.1.2.1.43.10.2.1.4.1.2', // Cyan toner level
+      // ... other OIDs
+    ];
+
+    return new Promise((resolve, reject) => {
+      session.get(oids, (error, varbinds) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(this.parseTonerLevels(varbinds));
+        }
+        session.close();
+      });
+    });
+  }
+}
+```
+
+### Billing Integration
+
+Stripe integration for B2B requires handling complex billing scenarios:
+
+- **Metered billing**: Based on number of monitored printers
+- **Subscription management**: Handling plan changes and cancellations
+- **Multi-seat pricing**: Per-user pricing within tenant organizations
+
+## Performance Optimizations
+
+### Database Optimization
+
+- **Query optimization**: Using Prisma's query analysis tools
+- **Connection pooling**: PgBouncer for production deployments
+- **Read replicas**: For analytics and reporting queries
+
+### Frontend Performance
+
+- **Code splitting**: Route-based and component-based splitting
+- **Image optimization**: Next.js automatic image optimization
+- **Caching strategy**: Aggressive caching for dashboard data
+
+## Deployment & Infrastructure
+
+### Containerization with Docker
+
+```dockerfile
+FROM node:18-alpine AS base
+WORKDIR /app
+
+# Dependencies
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Build
+COPY . .
+RUN npm run build
+
+# Runtime
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+### Monitoring & Observability
+
+- **Error tracking**: Sentry for error monitoring
+- **Performance monitoring**: Web Vitals tracking
+- **Business metrics**: Custom dashboards for key SaaS metrics
+
+## Business Lessons
+
+### MVP vs. Enterprise Features
+
+Starting with a focused MVP helped us validate the market, but B2B customers quickly demanded enterprise features:
+
+- **SSO integration**: Essential for larger organizations
+- **Advanced permissions**: Role-based access control
+- **API access**: Customers wanted to integrate with their existing systems
+- **White-label options**: Some customers needed branded solutions
+
+### Customer Feedback Loop
+
+Building a B2B product requires constant customer communication:
+
+- **Weekly customer calls**: Direct feedback from power users
+- **Feature request tracking**: Systematic prioritization of requests
+- **Beta testing program**: Early access to new features
+
+## Key Takeaways
+
+1. **Choose boring technology**: PostgreSQL and Next.js were reliable choices that let us focus on business logic
+2. **Start simple**: Our initial architecture was much simpler, we added complexity as we grew
+3. **Customer-driven development**: B2B customers have very specific needs, listen to them
+4. **Monitor everything**: In B2B, uptime and performance directly impact customer business
+5. **Plan for scale**: Multi-tenancy decisions made early saved us months of refactoring
+
+## What's Next?
+
+We're currently working on:
+- **Mobile app**: React Native app for field technicians
+- **AI insights**: Machine learning for predictive maintenance
+- **Marketplace**: Third-party integrations and add-ons
+
+Building a B2B SaaS product is challenging but incredibly rewarding. The combination of Next.js, TypeScript, and PostgreSQL has served us well, and I'd recommend this stack for other SaaS founders.
+
+Have you built a B2B SaaS application? I'd love to hear about your experiences and challenges in the comments!

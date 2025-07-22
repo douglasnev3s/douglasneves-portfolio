@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* #000000 - black */
+    --foreground: 0 0% 100%; /* #ffffff - white */
+    --card: 240 10% 10%; /* #18181b - zinc-900 */
+    --card-foreground: 0 0% 100%; /* #ffffff - white */
+    --popover: 240 10% 10%; /* #18181b - zinc-900 */
+    --popover-foreground: 0 0% 100%; /* #ffffff - white */
+    --primary: 217 91% 60%; /* #3b82f6 - blue-500 */
+    --primary-foreground: 0 0% 100%; /* #ffffff - white */
+    --secondary: 240 4% 16%; /* #27272a - zinc-800 */
+    --secondary-foreground: 0 0% 100%; /* #ffffff - white */
+    --muted: 240 4% 16%; /* #27272a - zinc-800 */
+    --muted-foreground: 240 5% 65%; /* #a1a1aa - gray-400 */
+    --accent: 240 4% 16%; /* #27272a - zinc-800 */
+    --accent-foreground: 0 0% 100%; /* #ffffff - white */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%; /* #27272a - zinc-800 */
+    --input: 240 4% 16%; /* #27272a - zinc-800 */
+    --ring: 217 91% 60%; /* #3b82f6 - blue-500 */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%; /* #000000 - black */
+    --foreground: 0 0% 100%; /* #ffffff - white */
+    --card: 240 10% 10%; /* #18181b - zinc-900 */
+    --card-foreground: 0 0% 100%; /* #ffffff - white */
+    --popover: 240 10% 10%; /* #18181b - zinc-900 */
+    --popover-foreground: 0 0% 100%; /* #ffffff - white */
+    --primary: 217 91% 60%; /* #3b82f6 - blue-500 */
+    --primary-foreground: 0 0% 100%; /* #ffffff - white */
+    --secondary: 240 4% 16%; /* #27272a - zinc-800 */
+    --secondary-foreground: 0 0% 100%; /* #ffffff - white */
+    --muted: 240 4% 16%; /* #27272a - zinc-800 */
+    --muted-foreground: 240 5% 65%; /* #a1a1aa - gray-400 */
+    --accent: 240 4% 16%; /* #27272a - zinc-800 */
+    --accent-foreground: 0 0% 100%; /* #ffffff - white */
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%; /* #27272a - zinc-800 */
+    --input: 240 4% 16%; /* #27272a - zinc-800 */
+    --ring: 217 91% 60%; /* #3b82f6 - blue-500 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom styles for zenorocha.com inspired design */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-primary; /* Blue accent for titles only */
+  }
+  
+  p {
+    @apply text-foreground; /* White text for primary content */
+  }
+  
+  .text-secondary {
+    @apply text-muted-foreground; /* Gray text for secondary info */
+  }
+}
