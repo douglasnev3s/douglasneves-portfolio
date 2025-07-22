@@ -25,7 +25,7 @@ export default function Home() {
         </h1>
         
         {/* Title */}
-        <h2 className="text-xl md:text-2xl text-primary font-medium">
+        <h2 className="text-xl md:text-2xl text-white font-medium">
           Senior Full-Stack JavaScript Engineer
         </h2>
         
@@ -36,7 +36,7 @@ export default function Home() {
           </p>
           
           <p>
-            Currently developing <span className="text-primary">Suprify</span>, a B2B SaaS platform for printer fleet management, while leading technical teams at <span className="text-primary">Siemens</span> across USA, Germany, and Austria.
+            Currently developing <span className="text-white font-medium">Suprify</span>, a B2B SaaS platform for printer fleet management, while leading technical teams at <span className="text-white font-medium">Siemens</span> across USA, Germany, and Austria.
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function Home() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
-          <Button asChild size="lg">
+          <Button variant="secondary" asChild size="lg">
             <Link href="/projects">
               View Projects
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -68,7 +68,7 @@ export default function Home() {
 
       {/* About Section */}
       <div className="mt-24 space-y-8">
-        <h3 className="text-2xl font-bold text-primary">About</h3>
+        <h3 className="text-2xl font-bold text-white">About</h3>
         
         <div className="space-y-6 text-foreground leading-relaxed">
           <p>

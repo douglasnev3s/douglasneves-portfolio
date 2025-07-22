@@ -62,7 +62,7 @@ export default function ExperiencePage() {
     <div className="container mx-auto px-4 py-16 max-w-4xl">
       {/* Header */}
       <div className="space-y-4 mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary">
+        <h1 className="text-4xl md:text-5xl font-bold" style={{ color: 'hsl(255.1, 91.7%, 76.3%)' }}>
           Career
         </h1>
         <p className="text-lg text-muted-foreground">
@@ -77,11 +77,11 @@ export default function ExperiencePage() {
             <CardHeader>
               <div className="space-y-3">
                 <div className="flex items-start justify-between">
-                  <CardTitle className="text-xl text-primary">
+                  <CardTitle className="text-xl text-white">
                     {exp.title}
                   </CardTitle>
                   {exp.current && (
-                    <Badge className="bg-green-600 text-white text-xs">
+                    <Badge className="text-white text-xs" style={{ backgroundColor: 'hsl(255.1, 91.7%, 76.3%)' }}>
                       Current
                     </Badge>
                   )}
@@ -118,14 +118,14 @@ export default function ExperiencePage() {
 
       {/* Key Achievements */}
       <div className="space-y-8">
-        <h2 className="text-2xl font-bold text-primary">
+        <h2 className="text-2xl font-bold text-white">
           Key Achievements
         </h2>
         
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg text-primary">
+              <CardTitle className="text-lg text-white">
                 International Leadership
               </CardTitle>
             </CardHeader>
@@ -139,7 +139,7 @@ export default function ExperiencePage() {
           
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg text-primary">
+              <CardTitle className="text-lg text-white">
                 Entrepreneurial Success  
               </CardTitle>
             </CardHeader>
@@ -153,7 +153,7 @@ export default function ExperiencePage() {
           
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg text-primary">
+              <CardTitle className="text-lg text-white">
                 Enterprise Systems
               </CardTitle>
             </CardHeader>
@@ -167,7 +167,7 @@ export default function ExperiencePage() {
           
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg text-primary">
+              <CardTitle className="text-lg text-white">
                 Technical Innovation
               </CardTitle>
             </CardHeader>
@@ -186,15 +186,15 @@ export default function ExperiencePage() {
       {/* Career Stats */}
       <div className="grid gap-6 md:grid-cols-3 text-center">
         <div className="space-y-2">
-          <div className="text-3xl font-bold text-primary">8+</div>
+          <div className="text-3xl font-bold text-white">8+</div>
           <div className="text-sm text-muted-foreground">Years Experience</div>
         </div>
         <div className="space-y-2">
-          <div className="text-3xl font-bold text-primary">3</div>
+          <div className="text-3xl font-bold text-white">3</div>
           <div className="text-sm text-muted-foreground">Countries Collaborated</div>
         </div>
         <div className="space-y-2">
-          <div className="text-3xl font-bold text-primary">2</div>
+          <div className="text-3xl font-bold text-white">2</div>
           <div className="text-sm text-muted-foreground">Current Roles</div>
         </div>
       </div>

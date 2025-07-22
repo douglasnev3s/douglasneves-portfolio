@@ -8,12 +8,12 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Stack", href: "/stack" },
-  { name: "Projects", href: "/projects" },
-  { name: "Experience", href: "/experience" },
-  // { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
+  { name: "HOME", href: "/" },
+  { name: "STACK", href: "/stack" },
+  { name: "PROJECTS", href: "/projects" },
+  { name: "EXPERIENCE", href: "/experience" },
+  // { name: "BLOG", href: "/blog" },
+  { name: "CONTACT", href: "/contact" },
 ]
 
 export function Navigation() {
@@ -24,8 +24,8 @@ export function Navigation() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold text-primary">
-          Douglas Neves
+        <Link href="/" className="text-xl font-bold text-white" style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+          DOUGLAS NEVES
         </Link>
 
         {/* Desktop Navigation */}
@@ -35,8 +35,8 @@ export function Navigation() {
               key={item.href}
               href={item.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                pathname === item.href ? "text-primary" : "text-muted-foreground"
+                "text-sm font-medium transition-colors hover:text-white",
+                pathname === item.href ? "text-white" : "text-muted-foreground"
               )}
             >
               {item.name}
@@ -64,8 +64,8 @@ export function Navigation() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "block py-2 text-sm font-medium transition-colors hover:text-primary",
-                  pathname === item.href ? "text-primary" : "text-muted-foreground"
+                  "block py-2 text-sm font-medium transition-colors hover:text-white",
+                  pathname === item.href ? "text-white" : "text-muted-foreground"
                 )}
                 onClick={() => setIsOpen(false)}
               >

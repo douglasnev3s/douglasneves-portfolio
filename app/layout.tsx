@@ -1,10 +1,19 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Poppins } from "next/font/google"
 import "./globals.css"
 import { Navigation } from "@/components/layout/navigation"
 import { Footer } from "@/components/layout/footer"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter"
+})
+
+const poppins = Poppins({ 
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-poppins"
+})
 
 export const metadata: Metadata = {
   title: {
@@ -59,7 +68,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${poppins.variable} ${inter.className}`}>
         <div className="relative flex min-h-screen flex-col">
           <Navigation />
           <main className="flex-1">{children}</main>
